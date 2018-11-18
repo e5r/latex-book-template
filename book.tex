@@ -1,0 +1,73 @@
+\documentclass[a4paper,12pt]{book}
+
+\usepackage{./inc/bookstyle}
+
+\IfFileExists{./book/meta}{
+    \input{./book/meta}
+}
+
+\begin{document}
+    % Cover
+    %\includepdf{./book/cover.pdf}
+    %\includegraphics{./book/cover}
+    %\includegraphics[width=\paperwidth,height=\paperheight]{./book/cover.jpg}
+
+    \frontmatter
+
+    % Title
+    \ifshowdefaulttitle
+        \maketitle
+    \else
+        \IfFileExists{./book/tex/title}{
+            \input{./book/tex/title}
+        }
+    \fi
+
+    % Table of contents
+    \ifshowtableofcontents
+        \tableofcontents
+    \fi
+    
+    % List of figures
+    \ifshowlistoffigures
+        \listoffigures
+    \fi
+
+    % List of tables
+    \ifshowlistoftables
+        \listoftables
+    \fi
+
+    % Preface
+    \IfFileExists{./book/tex/preface}{
+        \input{./book/tex/preface}
+    }
+
+    % Introduction
+    \IfFileExists{./book/tex/introduction}{
+        \input{./book/tex/introduction}
+    }
+
+    % Chapter's
+    \mainmatter
+    \input{./book/tex/chapters/chapter-01-the-first.tex}
+
+    % Conclusion
+    \IfFileExists{./book/tex/conclusion}{
+        \frontmatter
+        \input{./book/tex/conclusion}
+    }
+
+    % Appendix
+    \IfFileExists{./book/tex/appendix}{
+        \appendix
+        \input{./book/tex/appendix}
+    }
+
+    % Bibliography
+    \IfFileExists{./book/tex/bibliography}{
+        \clearpage
+        \input{./book/tex/bibliography}
+    }
+
+\end{document}

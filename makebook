@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# Copyright (c) E5R Development Team. All rights reserved.
+# Licensed under the Apache License, Version 2.0. More license information in LICENSE.
+
+set -eu
+
+_has() {
+    type "${1}" > /dev/null 2>&1
+}
+
+_show_log()
+{
+    echo "log: ${1}"
+}
+_show_error()
+{
+    echo "err: ${1}"
+}
+
+# check requirements
+if ! _has "latex"; then
+    _show_error "latex is required"
+    exit 1
+fi
+
+if ! _has "dvipdf"; then
+    _show_error "dvipdf is required"
+    exit 1
+fi
+
+clean(){
+    rm -f book.aux
+    rm -f book.log
+    rm -f book.lof
+    rm -f book.lot
+    rm -f book.toc
+    rm -f book.dvi
+    rm -f book.pdf
+}
+
+make() {
+    latex book.tex  # Generating TOC
+    latex book.tex  # Recompilling with TOC
+    dvipdf book.dvi # Generating PDF
+}
+
+if [ "$#" != "0" ]; then
+    if [ "$1" = "clean" ]; then
+        _show_log "Cleaning..."
+        clean
+        exit 0
+    fi
+fi
+
+_show_log "Making book..."
+make
+
+exit $?
