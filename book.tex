@@ -8,9 +8,9 @@
 
 \begin{document}
     % Cover
-    %\includepdf{./book/cover.pdf}
-    %\includegraphics{./book/cover}
-    %\includegraphics[width=\paperwidth,height=\paperheight]{./book/cover.jpg}
+    \IfFileExists{./book/cover.eps}{
+        \includegraphics{./book/cover}
+    }
 
     \frontmatter
 
