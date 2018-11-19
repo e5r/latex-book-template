@@ -21,6 +21,8 @@ goto:main
            book.toc ^
            book.dvi ^
            book.pdf
+    del /F book\cover.eps
+    del /F book\img\*.eps
     goto:eof
 
 :convert_images

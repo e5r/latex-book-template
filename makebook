@@ -42,6 +42,8 @@ clean(){
     rm -f book.toc
     rm -f book.dvi
     rm -f book.pdf
+    rm -f book/cover.eps
+    rm -f book/img/*.eps
 }
 
 convert_images() {
