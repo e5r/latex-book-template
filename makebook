@@ -29,6 +29,11 @@ if ! _has "dvipdf"; then
     exit 1
 fi
 
+if ! _has "magick"; then
+    _show_error "magick is required"
+    exit 1
+fi
+
 clean(){
     rm -f book.aux
     rm -f book.log
@@ -39,7 +44,18 @@ clean(){
     rm -f book.pdf
 }
 
+convert_images() {
+    _show_log "Converting images..."
+    if [ -f book/cover.png ]; then
+        magick book/cover.png book/cover.eps
+    fi
+    if [ -f book/img/*.png]; then
+        magick mogrify -format eps book/img/*.png
+    fi
+}
+
 make() {
+    convert_images
     latex book.tex  # Generating TOC
     latex book.tex  # Recompilling with TOC
     dvipdf book.dvi # Generating PDF
