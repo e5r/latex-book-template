@@ -23,7 +23,18 @@ goto:main
            book.pdf
     goto:eof
 
+:convert_images
+    call:_show_log "Converting images..."
+    if exist book/cover.png (
+        magick book/cover.png book/cover.eps
+    )
+    if exist book/img/*.png (
+        magick mogrify -format eps book/img/*.png
+    )
+    goto:eof
+
 :make
+    call:convert_images
     :: Generating TOC
     latex book.tex
     :: Recompilling with TOC
@@ -33,15 +44,21 @@ goto:main
     goto:eof
 
 :main
-    where latex %1 > nul 2>&1
+    where latex > nul 2>&1
     if %ERRORLEVEL% neq 0 (
         call:_show_error "latex is required"
         exit /b 1
     )
 
-    where dvipdfm %1 > nul 2>&1
+    where dvipdfm > nul 2>&1
     if %ERRORLEVEL% neq 0 (
         call:_show_error "dvipdfm is required"
+        exit /b 1
+    )
+
+    where magick > nul 2>&1
+    if %ERRORLEVEL% neq 0 (
+        call:_show_error "magick is required"
         exit /b 1
     )
 
