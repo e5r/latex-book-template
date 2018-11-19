@@ -16,10 +16,11 @@ Após construído, seu livro estará pronto como `book.pdf`.
 ### Linux
 ```shell
 $ ./makebook
+$ ./makebook clean
 ```
 
 ### Windows
 ```shell
 $ makebook
+$ makebook clean
 ```
-
