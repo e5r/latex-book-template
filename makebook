@@ -29,8 +29,13 @@ if ! _has "dvipdf"; then
     exit 1
 fi
 
-if ! _has "magick"; then
-    _show_error "magick is required"
+if ! _has "mogrify"; then
+    _show_error "mogrify is required"
+    exit 1
+fi
+
+if ! _has "convert"; then
+    _show_error "convert is required"
     exit 1
 fi
 
@@ -49,10 +54,10 @@ clean(){
 convert_images() {
     _show_log "Converting images..."
     if [ -f book/cover.png ]; then
-        magick book/cover.png book/cover.eps
+        convert book/cover.png book/cover.eps
     fi
-    if [ -f book/img/*.png]; then
-        magick mogrify -format eps book/img/*.png
+    if [ -f book/img/*.png ]; then
+        mogrify -format eps book/img/*.png
     fi
 }
 
