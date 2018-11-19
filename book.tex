@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{book}
+\documentclass{book}
 
 \usepackage{./inc/bookstyle}
 
@@ -27,7 +27,7 @@
     \ifshowtableofcontents
         \tableofcontents
     \fi
-    
+
     % List of figures
     \ifshowlistoffigures
         \listoffigures
@@ -50,7 +50,10 @@
 
     % Chapter's
     \mainmatter
-    \input{./book/tex/chapters/chapter-01-the-first.tex}
+    \IfFileExists{./book/chapters}{
+        \input{./book/chapters}
+    }
+    %\input{./book/tex/chapters/chapter-01-the-first.tex}
 
     % Conclusion
     \IfFileExists{./book/tex/conclusion}{
