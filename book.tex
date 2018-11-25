@@ -1,4 +1,4 @@
-\documentclass{book}
+\documentclass[a4paper]{book}
 
 \usepackage{./inc/bookstyle}
 
@@ -9,7 +9,12 @@
 \begin{document}
     % Cover
     \IfFileExists{./book/cover.eps}{
-        \includegraphics{./book/cover}
+        \includegraphics[
+            bb=1.600in
+            9.820in
+            0.0in
+            0.0in
+        ]{./book/cover}
     }
 
     \frontmatter
