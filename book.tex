@@ -9,48 +9,73 @@
 \begin{document}
     % Cover
     \IfFileExists{./book/cover.eps}{
-        \includegraphics[
-            bb=1.600in
-            9.820in
-            0.0in
-            0.0in
-        ]{./book/cover}
+        \begingroup
+            \let\clearpage\relax
+            \includegraphics[
+                bb=1.600in
+                9.820in
+                0.0in
+                0.0in
+            ]{./book/cover}
+            \newpage\null\thispagestyle{empty}\newpage
+        \endgroup
     }
 
     \frontmatter
 
     % Title
     \ifshowdefaulttitle
-        \maketitle
+        \begingroup
+            \maketitle
+            \newpage\null\thispagestyle{empty}\newpage
+        \endgroup
     \else
         \IfFileExists{./book/tex/title}{
-            \input{./book/tex/title}
+            \begingroup
+                \input{./book/tex/title}
+                \newpage\null\thispagestyle{empty}\newpage
+            \endgroup
         }
     \fi
 
     % Table of contents
     \ifshowtableofcontents
-        \tableofcontents
+        \begingroup
+            \tableofcontents
+            \newpage\null\thispagestyle{empty}\newpage
+        \endgroup
     \fi
 
     % List of figures
     \ifshowlistoffigures
-        \listoffigures
+        \begingroup
+            \listoffigures
+            \newpage\null\thispagestyle{empty}\newpage
+        \endgroup
     \fi
 
     % List of tables
     \ifshowlistoftables
-        \listoftables
+        \begingroup
+            \listoftables
+            \newpage\null\thispagestyle{empty}\newpage
+        \endgroup
     \fi
 
     % Preface
     \IfFileExists{./book/tex/preface}{
-        \input{./book/tex/preface}
+        \begingroup
+            \input{./book/tex/preface}
+            \newpage\null\thispagestyle{empty}\newpage
+        \endgroup
     }
 
     % Introduction
     \IfFileExists{./book/tex/introduction}{
-        \input{./book/tex/introduction}
+        \begingroup
+            \input{./book/tex/introduction}
+            \newpage\null\thispagestyle{empty}\newpage
+        \endgroup
     }
 
     % Chapter's
