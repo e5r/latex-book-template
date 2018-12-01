@@ -3,7 +3,6 @@
 
 \ProvidesPackage{bookstyle}
 
-\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -20,11 +19,9 @@
 \newif\ifshowlistoftables
 
 % ----------------------------------------- %
-% \mycmd - Novo comando                     %
-%   #1 > Parâmetro 1                        %
-%   #2 > Parâmetro 2                        %
+% \booklang - Define a book language        %
+%   #1 > Language name                      %
 % ----------------------------------------- %
-%\newcommand{\mycmd}[2]{
-%    #1 % parameter 1
-%    #2 % parameter 2
-%}
+\newcommand{\booklang}[1]{
+   \usepackage[#1]{babel}
+}
