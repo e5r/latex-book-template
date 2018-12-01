@@ -30,14 +30,20 @@ Para isso edite o arquivo `/etc/ImageMagick-6/policy.xml`:
 
 Após construído, seu livro estará pronto como `book.pdf`.
 
-### Linux
-```shell
+### Unix Shell
+```
 $ ./makebook
 $ ./makebook clean
 ```
 
-### Windows
-```shell
-$ makebook
-$ makebook clean
+### PowerShell
+```
+PS> .\makebook
+PS> .\makebook clean
+```
+
+### Windows CMD
+```
+C:\> makebook
+C:\> makebook clean
 ```
