@@ -6,6 +6,23 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{listings}
+
+% ----------------------------------------- %
+% Code blocks configurations                %
+% ----------------------------------------- %
+
+% http://texdoc.net/texmf-dist/doc/latex/listings/listings.pdf
+% http://latexbr.blogspot.com/2012/07/dica-mostrando-codigo-c-java-etc-no.html
+\lstset{
+  basicstyle=\itshape,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=simple,
+  frameround=fttt
+}
+
 
 % ----------------------------------------- %
 % Custom configurations                     %
@@ -17,6 +34,7 @@
 \newif\ifshowtableofcontents
 \newif\ifshowlistoffigures
 \newif\ifshowlistoftables
+\newif\ifshowlistoflistings
 
 % ----------------------------------------- %
 % \booklang - Define a book language        %

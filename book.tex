@@ -50,6 +50,7 @@
     \ifshowlistoffigures
         \begingroup
             \listoffigures
+            \addcontentsline{toc}{chapter}{\listfigurename}
             \newpage\null\thispagestyle{empty}\newpage
         \endgroup
     \fi
@@ -58,6 +59,16 @@
     \ifshowlistoftables
         \begingroup
             \listoftables
+            \addcontentsline{toc}{chapter}{\listtablename}
+            \newpage\null\thispagestyle{empty}\newpage
+        \endgroup
+    \fi
+
+    % List of listings
+    \ifshowlistoflistings
+        \begingroup
+            \lstlistoflistings
+            \addcontentsline{toc}{chapter}{\lstlistlistingname}
             \newpage\null\thispagestyle{empty}\newpage
         \endgroup
     \fi
